@@ -1,6 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from 'next/dynamic'
+
+const NepalMap = dynamic(() => import('@/components/NepalMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full rounded-xl flex items-center justify-center" style={{ height: '520px', backgroundColor: '#111827' }}>
+      <div className="text-center">
+        <p className="text-[#e8c547] text-sm mb-2">Loading map...</p>
+        <p className="text-slate-500 text-xs">Nepal districts geojson rendering</p>
+      </div>
+    </div>
+  )
+})
 
 export default function Home() {
   return (
@@ -65,20 +78,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3 — MAP PLACEHOLDER */}
+      {/* SECTION 3 — MAP */}
       <section className="w-full max-w-5xl mx-auto px-4 pb-16">
-        <div className="w-full h-[500px] bg-[#111827] rounded-xl flex flex-col items-center justify-center border border-white/5">
-          <p className="text-[#e8c547] text-xl font-semibold mb-2">
-            Interactive District Map
-          </p>
-          <p className="text-slate-400 text-sm mb-4">
-            Click any district to explore the paradox
-          </p>
-          <p className="text-slate-500 text-xs italic">
-            (Map component loading...)
-          </p>
-          {/* TODO: Replace with <NepalMap /> component */}
-        </div>
+        <NepalMap />
       </section>
 
       {/* SECTION 4 — PARADOX EXPLAINED */}
