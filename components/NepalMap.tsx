@@ -55,7 +55,6 @@ export default function NepalMap() {
 
     const initMap = async () => {
       const L = (await import('leaflet')).default
-      await import('leaflet/dist/leaflet.css')
 
       if (cancelled || !mapRef.current) return
 

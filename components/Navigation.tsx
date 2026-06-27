@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Overview", href: "/" },
-  { label: "Districts", href: "/district/kailali" },
+  { label: "Districts", href: "/districts" },
   { label: "Compare", href: "/compare" },
   { label: "Methodology", href: "/methodology" },
   { label: "Policy", href: "/policy" },
