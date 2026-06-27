@@ -26,8 +26,13 @@ const mockData = [
 ];
 
 export default function YieldChart({ district }: YieldChartProps) {
+  const label = district.charAt(0).toUpperCase() + district.slice(1);
+
   return (
     <div className="w-full h-[400px]">
+      <p className="text-slate-400 text-xs mb-2">
+        Yield &amp; remittance trends — {label}
+      </p>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={mockData}>
           <CartesianGrid strokeDasharray="3 3" />
