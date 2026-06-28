@@ -2,21 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
 :root {
-  --bg-primary: #0a0f1e;
-  --bg-secondary: #111827;
-  --bg-card: #1a2235;
-  --accent: #e8c547;
-  --accent-dim: #b8952f;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --red-zone: #ef4444;
-  --green-zone: #22c55e;
-  --orange-zone: #f97316;
-  --blue-zone: #3b82f6;
+  --bg-primary: #f7f6f2;
+  --bg-secondary: #efede7;
+  --bg-card: #ffffff;
+  --bg-dark: #0e0e0c;
+  --bg-elevated: #f0ede6;
+  --accent: #9e7c44;
+  --accent-light: rgba(158, 124, 68, 0.12);
+  --accent-border: rgba(158, 124, 68, 0.25);
+  --text-primary: #0e0e0c;
+  --text-secondary: #6a6860;
+  --text-muted: #9b9890;
+  --border: rgba(14, 14, 12, 0.09);
+  --border-strong: rgba(14, 14, 12, 0.18);
+  --red-zone: #dc2626;
+  --green-zone: #16a34a;
+  --orange-zone: #ea580c;
+  --blue-zone: #2563eb;
+  --red-light: rgba(220, 38, 38, 0.1);
+  --green-light: rgba(22, 163, 74, 0.1);
+  --orange-light: rgba(234, 88, 12, 0.1);
+  --blue-light: rgba(37, 99, 235, 0.1);
 }
+
+* { box-sizing: border-box; }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+.font-serif { font-family: 'Libre Baskerville', serif; }
+.font-mono-custom { font-family: 'DM Mono', monospace; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--accent-border); border-radius: 3px; }

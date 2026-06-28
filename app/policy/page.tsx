@@ -5,15 +5,15 @@ import Link from 'next/link'
 export default function PolicyPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-3xl mx-auto px-10 py-16">
 
         {/* Header */}
         <div className="mb-14">
-          <p className="text-[#e8c547] text-sm font-medium tracking-widest uppercase mb-3">
+          <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: '#9b9890' }}>
             Research Implications
           </p>
-          <h1 className="text-5xl font-bold text-white mb-4">Policy Brief</h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <h1 className="font-serif font-bold text-4xl mb-4" style={{ color: '#0e0e0c' }}>Policy Brief</h1>
+          <p className="text-sm leading-relaxed" style={{ color: '#6a6860' }}>
             District-differentiated policy recommendations derived from cross-sectional 
             analysis of Nepal&apos;s 75 districts. One-size-fits-all remittance policy 
             fails because the paradox is not uniform.
@@ -22,16 +22,16 @@ export default function PolicyPage() {
 
         {/* Core Finding Box */}
         <section className="mb-12">
-          <div className="rounded-xl p-7" style={{ backgroundColor: 'var(--bg-card)', borderLeft: '4px solid #e8c547' }}>
-            <h2 className="text-[#e8c547] text-xs font-semibold tracking-widest uppercase mb-3">Core Finding</h2>
-            <p className="text-white text-lg leading-relaxed mb-4">
+          <div className="rounded-lg p-7" style={{ backgroundColor: '#0e0e0c', borderRadius: '8px', borderLeft: '4px solid #9e7c44' }}>
+            <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: 'rgba(247,246,242,0.5)' }}>Core Finding</p>
+            <p className="font-serif text-base leading-relaxed mb-4" style={{ color: '#f7f6f2' }}>
               Structural vulnerability — not migration intensity alone — determines whether 
               remittance-sending districts stagnate agriculturally. Districts with high RVI 
-              scores average <span className="text-[#ef4444] font-semibold">2.1 MT/Ha</span> cereal 
-              yield against a national average of <span className="text-[#e8c547] font-semibold">2.90 MT/Ha</span>, 
+              scores average <span className="font-bold" style={{ color: '#dc2626' }}>2.1 MT/Ha</span> cereal 
+              yield against a national average of <span className="font-bold" style={{ color: '#9e7c44' }}>2.90 MT/Ha</span>, 
               while ecologically advantaged high-migration districts maintain yields above average.
             </p>
-            <p className="text-slate-400 text-sm">
+            <p className="text-sm" style={{ color: 'rgba(247,246,242,0.6)' }}>
               This divergence implies that agricultural policy targeting remittance districts must 
               be differentiated by structural context — not applied uniformly across Nepal&apos;s 
               geographically and ecologically diverse districts.
@@ -41,27 +41,30 @@ export default function PolicyPage() {
 
         {/* Three Policy Tracks */}
         <section className="mb-12">
-          <h2 className="text-white text-2xl font-semibold mb-2">Three Policy Tracks</h2>
-          <p className="text-slate-400 text-sm mb-6">Recommendations differentiated by district classification</p>
+          <h2 className="font-serif font-bold text-2xl mb-2" style={{ color: '#0e0e0c' }}>Three Policy Tracks</h2>
+          <p className="text-sm mb-6" style={{ color: '#6a6860' }}>Recommendations differentiated by district classification</p>
 
           <div className="space-y-6">
 
             {/* Track 1 — Paradox Zone */}
-            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--bg-card)' }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ backgroundColor: '#ef444415', borderBottom: '1px solid #ef444430' }}>
-                <span className="w-3 h-3 rounded-full bg-red-500 shrink-0"></span>
-                <div>
-                  <h3 className="text-white font-semibold">Track 1 — Paradox Zone Districts</h3>
-                  <p className="text-slate-400 text-xs">17 districts: High migration + below-average yield</p>
+            <div className="rounded-lg overflow-hidden" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '6px' }}>
+              <div className="p-6 flex gap-5 items-start">
+                <span className="font-mono text-3xl font-bold shrink-0" style={{ color: '#9e7c44', opacity: 0.15 }}>01</span>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <h3 className="font-serif font-bold text-lg" style={{ color: '#0e0e0c' }}>Track 1 — Paradox Zone Districts</h3>
+                    <span className="text-xs" style={{ color: '#9e7c44', fontFamily: 'DM Mono, monospace' }}>17 districts</span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: '#6a6860' }}>
+                    These districts face the full paradox: labour outmigration reduces farm workforce 
+                    while remittance income flows primarily into consumption rather than agricultural 
+                    investment. The structural vulnerability (high RVI) compounds the migration effect.
+                  </p>
                 </div>
-                <span className="ml-auto text-red-400 text-xs font-medium">Examples: Achham, Bajura, Bajhang, Doti, Jajarkot</span>
               </div>
-              <div className="px-6 py-5 space-y-4">
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  These districts face the full paradox: labour outmigration reduces farm workforce 
-                  while remittance income flows primarily into consumption rather than agricultural 
-                  investment. The structural vulnerability (high RVI) compounds the migration effect.
-                </p>
+              <div style={{ borderTop: '0.8px solid rgba(14,14,12,0.09)', margin: '0 24px' }}></div>
+              <div className="px-6 py-5">
+                <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: '#0e0e0c' }}>RECOMMENDED ACTIONS</p>
                 <div className="space-y-3">
                   {[
                     {
@@ -81,9 +84,11 @@ export default function PolicyPage() {
                       rationale: 'Gulf-return migrants carry savings and sometimes skills. Structured agri-entrepreneurship programs can redirect capital toward farm investment.'
                     },
                   ].map((r, i) => (
-                    <div key={i} className="rounded-lg p-4 bg-slate-800/40">
-                      <p className="text-white text-sm font-medium mb-1">→ {r.rec}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed">{r.rationale}</p>
+                    <div key={i} className="flex gap-2">
+                      <span style={{ color: '#9e7c44' }}>→</span>
+                      <div>
+                        <p className="text-sm" style={{ color: '#6a6860' }}><span className="font-medium" style={{ color: '#0e0e0c' }}>{r.rec}</span>: {r.rationale}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -91,22 +96,25 @@ export default function PolicyPage() {
             </div>
 
             {/* Track 2 — Resilient */}
-            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--bg-card)' }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ backgroundColor: '#22c55e15', borderBottom: '1px solid #22c55e30' }}>
-                <span className="w-3 h-3 rounded-full bg-green-500 shrink-0"></span>
-                <div>
-                  <h3 className="text-white font-semibold">Track 2 — Resilient Districts</h3>
-                  <p className="text-slate-400 text-xs">10 districts: High migration + above-average yield</p>
+            <div className="rounded-lg overflow-hidden" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '6px' }}>
+              <div className="p-6 flex gap-5 items-start">
+                <span className="font-mono text-3xl font-bold shrink-0" style={{ color: '#9e7c44', opacity: 0.15 }}>02</span>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <h3 className="font-serif font-bold text-lg" style={{ color: '#0e0e0c' }}>Track 2 — Resilient Districts</h3>
+                    <span className="text-xs" style={{ color: '#9e7c44', fontFamily: 'DM Mono, monospace' }}>16 districts</span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: '#6a6860' }}>
+                    These districts — predominantly Terai plains — maintain high agricultural 
+                    productivity despite heavy migration, likely due to irrigation infrastructure, 
+                    flat terrain enabling mechanization, and stronger market linkages. 
+                    They represent the model to replicate and study.
+                  </p>
                 </div>
-                <span className="ml-auto text-green-400 text-xs font-medium">Examples: Kailali, Jhapa, Morang, Rupandehi, Chitwan</span>
               </div>
-              <div className="px-6 py-5 space-y-4">
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  These districts — predominantly Terai plains — maintain high agricultural 
-                  productivity despite heavy migration, likely due to irrigation infrastructure, 
-                  flat terrain enabling mechanization, and stronger market linkages. 
-                  They represent the model to replicate and study.
-                </p>
+              <div style={{ borderTop: '0.8px solid rgba(14,14,12,0.09)', margin: '0 24px' }}></div>
+              <div className="px-6 py-5">
+                <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: '#0e0e0c' }}>RECOMMENDED ACTIONS</p>
                 <div className="space-y-3">
                   {[
                     {
@@ -122,9 +130,11 @@ export default function PolicyPage() {
                       rationale: 'Designate resilient high-migration districts as learning hubs for extension workers from paradox zone districts. Peer learning is more effective than top-down policy transfer.'
                     },
                   ].map((r, i) => (
-                    <div key={i} className="rounded-lg p-4 bg-slate-800/40">
-                      <p className="text-white text-sm font-medium mb-1">→ {r.rec}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed">{r.rationale}</p>
+                    <div key={i} className="flex gap-2">
+                      <span style={{ color: '#9e7c44' }}>→</span>
+                      <div>
+                        <p className="text-sm" style={{ color: '#6a6860' }}><span className="font-medium" style={{ color: '#0e0e0c' }}>{r.rec}</span>: {r.rationale}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -132,22 +142,25 @@ export default function PolicyPage() {
             </div>
 
             {/* Track 3 — Structurally Poor */}
-            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--bg-card)' }}>
-              <div className="px-6 py-4 flex items-center gap-3" style={{ backgroundColor: '#f9731615', borderBottom: '1px solid #f9731630' }}>
-                <span className="w-3 h-3 rounded-full bg-orange-500 shrink-0"></span>
-                <div>
-                  <h3 className="text-white font-semibold">Track 3 — Structurally Poor Districts</h3>
-                  <p className="text-slate-400 text-xs">32 districts: Low migration + below-average yield</p>
+            <div className="rounded-lg overflow-hidden" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '6px' }}>
+              <div className="p-6 flex gap-5 items-start">
+                <span className="font-mono text-3xl font-bold shrink-0" style={{ color: '#9e7c44', opacity: 0.15 }}>03</span>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <h3 className="font-serif font-bold text-lg" style={{ color: '#0e0e0c' }}>Track 3 — Structurally Poor Districts</h3>
+                    <span className="text-xs" style={{ color: '#9e7c44', fontFamily: 'DM Mono, monospace' }}>32 districts</span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: '#6a6860' }}>
+                    The largest category. These districts face agricultural underperformance 
+                    driven by structural poverty and geographic isolation — not remittance dynamics. 
+                    Applying remittance-focused policy here misdiagnoses the problem. 
+                    Direct agricultural investment is needed.
+                  </p>
                 </div>
-                <span className="ml-auto text-orange-400 text-xs font-medium">Examples: Humla, Dolpa, Mugu, Rasuwa, Manang</span>
               </div>
-              <div className="px-6 py-5 space-y-4">
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  The largest category. These districts face agricultural underperformance 
-                  driven by structural poverty and geographic isolation — not remittance dynamics. 
-                  Applying remittance-focused policy here misdiagnoses the problem. 
-                  Direct agricultural investment is needed.
-                </p>
+              <div style={{ borderTop: '0.8px solid rgba(14,14,12,0.09)', margin: '0 24px' }}></div>
+              <div className="px-6 py-5">
+                <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: '#0e0e0c' }}>RECOMMENDED ACTIONS</p>
                 <div className="space-y-3">
                   {[
                     {
@@ -163,9 +176,11 @@ export default function PolicyPage() {
                       rationale: 'High-altitude districts face distinct agronomic constraints. Research into cold-tolerant varieties and altitude-appropriate cropping systems is more relevant than remittance policy.'
                     },
                   ].map((r, i) => (
-                    <div key={i} className="rounded-lg p-4 bg-slate-800/40">
-                      <p className="text-white text-sm font-medium mb-1">→ {r.rec}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed">{r.rationale}</p>
+                    <div key={i} className="flex gap-2">
+                      <span style={{ color: '#9e7c44' }}>→</span>
+                      <div>
+                        <p className="text-sm" style={{ color: '#6a6860' }}><span className="font-medium" style={{ color: '#0e0e0c' }}>{r.rec}</span>: {r.rationale}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -177,9 +192,9 @@ export default function PolicyPage() {
 
         {/* What This Study Cannot Conclude */}
         <section className="mb-12">
-          <h2 className="text-white text-2xl font-semibold mb-6">What This Study Cannot Conclude</h2>
-          <div className="rounded-xl p-6" style={{ backgroundColor: 'var(--bg-card)' }}>
-            <p className="text-slate-300 text-sm leading-relaxed mb-4">
+          <h2 className="font-serif font-bold text-2xl mb-6" style={{ color: '#0e0e0c' }}>What This Study Cannot Conclude</h2>
+          <div className="rounded-lg p-6" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '6px' }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: '#6a6860' }}>
               The cross-sectional design of this study establishes correlation, not causation. 
               The following causal claims are not supported by the current data and should 
               not be inferred from the findings:
@@ -191,9 +206,9 @@ export default function PolicyPage() {
                 'That the paradox is worsening over time — single-year cross-sectional data cannot establish trend direction',
                 'That policy interventions in paradox zone districts will produce resilient-district outcomes — structural conditions differ',
               ].map((c, i) => (
-                <div key={i} className="flex gap-3 p-3 rounded-lg bg-slate-800/30">
-                  <span className="text-red-400 text-sm shrink-0">✕</span>
-                  <p className="text-slate-400 text-xs leading-relaxed">{c}</p>
+                <div key={i} className="flex gap-3 items-start">
+                  <span className="text-sm shrink-0" style={{ color: '#dc2626' }}>✕</span>
+                  <p className="text-xs leading-relaxed" style={{ color: '#6a6860' }}>{c}</p>
                 </div>
               ))}
             </div>
@@ -202,7 +217,7 @@ export default function PolicyPage() {
 
         {/* Future Research */}
         <section className="mb-12">
-          <h2 className="text-white text-2xl font-semibold mb-6">Future Research Directions</h2>
+          <h2 className="font-serif font-bold text-2xl mb-6" style={{ color: '#0e0e0c' }}>Future Research Directions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               { title: 'Panel data extension', desc: 'Acquiring MoALD data across 5–10 years would enable fixed-effects panel regression and support causal claims about the migration-yield relationship over time.' },
@@ -210,9 +225,9 @@ export default function PolicyPage() {
               { title: 'Spatial lag models', desc: 'Moran\'s I confirms strong spatial clustering. Future work should apply spatial lag or spatial error models using pysal to account for geographic spillovers between districts.' },
               { title: 'Crop disaggregation', desc: 'Aggregate cereal yield combines paddy, maize, and wheat with different migration sensitivities. Disaggregated crop analysis may reveal stronger migration effects in specific staples.' },
             ].map((f, i) => (
-              <div key={i} className="rounded-xl p-5" style={{ backgroundColor: 'var(--bg-card)' }}>
-                <p className="text-[#e8c547] font-semibold text-sm mb-2">{f.title}</p>
-                <p className="text-slate-400 text-xs leading-relaxed">{f.desc}</p>
+              <div key={i} className="rounded-lg p-5" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '6px' }}>
+                <p className="font-serif font-bold text-sm mb-2" style={{ color: '#9e7c44' }}>{f.title}</p>
+                <p className="text-xs leading-relaxed" style={{ color: '#6a6860' }}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -220,10 +235,10 @@ export default function PolicyPage() {
 
         {/* Navigation */}
         <div className="flex items-center justify-between pt-4">
-          <Link href="/methodology" className="text-slate-400 hover:text-[#e8c547] text-sm transition-colors">
+          <Link href="/methodology" className="text-sm" style={{ color: '#9b9890' }}>
             ← Methodology
           </Link>
-          <Link href="/compare" className="text-[#e8c547] hover:underline text-sm">
+          <Link href="/compare" className="text-sm" style={{ color: '#9e7c44' }}>
             Compare Districts →
           </Link>
         </div>

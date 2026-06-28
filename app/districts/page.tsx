@@ -55,41 +55,43 @@ export default function DistrictsPage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-10 py-16">
 
         {/* Header */}
         <div className="mb-10">
-          <p className="text-[#e8c547] text-sm font-medium tracking-widest uppercase mb-3">
+          <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: '#9b9890' }}>
             75 Districts
           </p>
-          <h1 className="text-4xl font-bold text-white mb-2">District Explorer</h1>
-          <p className="text-slate-400">
+          <h1 className="font-serif font-bold text-4xl mb-2" style={{ color: '#0e0e0c' }}>District Explorer</h1>
+          <p className="text-sm" style={{ color: '#6a6860' }}>
             Browse all 75 Nepal districts. Click any district to see its full migration-agriculture profile.
           </p>
         </div>
 
         {/* Filters */}
-        <div className="rounded-xl p-5 mb-8 flex flex-wrap gap-4 items-end" style={{ backgroundColor: 'var(--bg-card)' }}>
+        <div className="mb-8 flex flex-wrap gap-4 items-end" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px', padding: '16px 20px' }}>
           
           {/* Search */}
           <div className="flex-1 min-w-[200px]">
-            <label className="text-slate-400 text-xs mb-1 block">Search</label>
+            <label className="text-xs mb-1 block" style={{ color: '#9b9890' }}>Search</label>
             <input
               type="text"
               placeholder="District name..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full bg-slate-800 text-white rounded-lg px-3 py-2 text-sm border border-white/10 focus:outline-none focus:border-[#e8c547]/50"
+              className="w-full rounded-lg px-3 py-2 text-sm focus:outline-none"
+              style={{ backgroundColor: '#f7f6f2', border: '0.8px solid rgba(14,14,12,0.12)', borderRadius: '6px', color: '#0e0e0c' }}
             />
           </div>
 
           {/* Province */}
           <div>
-            <label className="text-slate-400 text-xs mb-1 block">Province</label>
+            <label className="text-xs mb-1 block" style={{ color: '#9b9890' }}>Province</label>
             <select
               value={province}
               onChange={e => setProvince(e.target.value)}
-              className="bg-slate-800 text-white rounded-lg px-3 py-2 text-sm border border-white/10 focus:outline-none focus:border-[#e8c547]/50"
+              className="px-3 py-2 text-sm focus:outline-none"
+              style={{ backgroundColor: '#f7f6f2', border: '0.8px solid rgba(14,14,12,0.12)', borderRadius: '6px', color: '#0e0e0c' }}
             >
               {PROVINCES.map(p => <option key={p}>{p}</option>)}
             </select>
@@ -97,11 +99,12 @@ export default function DistrictsPage() {
 
           {/* Sort */}
           <div>
-            <label className="text-slate-400 text-xs mb-1 block">Sort by</label>
+            <label className="text-xs mb-1 block" style={{ color: '#9b9890' }}>Sort by</label>
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value as 'name' | 'yield' | 'migration' | 'rdi')}
-              className="bg-slate-800 text-white rounded-lg px-3 py-2 text-sm border border-white/10 focus:outline-none focus:border-[#e8c547]/50"
+              className="px-3 py-2 text-sm focus:outline-none"
+              style={{ backgroundColor: '#f7f6f2', border: '0.8px solid rgba(14,14,12,0.12)', borderRadius: '6px', color: '#0e0e0c' }}
             >
               <option value="name">Name</option>
               <option value="yield">Yield (highest)</option>
@@ -111,7 +114,7 @@ export default function DistrictsPage() {
           </div>
 
           {/* Count */}
-          <div className="ml-auto text-slate-400 text-sm self-center">
+          <div className="ml-auto text-sm self-center" style={{ color: '#9b9890', fontFamily: 'DM Mono, monospace' }}>
             {filtered.length} district{filtered.length !== 1 ? 's' : ''}
           </div>
         </div>
@@ -119,20 +122,21 @@ export default function DistrictsPage() {
         {/* Classification filter pills */}
         <div className="flex gap-2 flex-wrap mb-6">
           {[
-            { key: 'all', label: 'All Types', color: '#64748b' },
-            { key: 'high-migration-low-yield', label: 'Paradox Zone', color: '#ef4444' },
-            { key: 'high-migration-high-yield', label: 'Resilient', color: '#22c55e' },
-            { key: 'low-migration-low-yield', label: 'Structurally Poor', color: '#f97316' },
-            { key: 'low-migration-high-yield', label: 'Stable', color: '#3b82f6' },
+            { key: 'all', label: 'All Types', color: '#6a6860' },
+            { key: 'high-migration-low-yield', label: 'Paradox Zone', color: '#dc2626' },
+            { key: 'high-migration-high-yield', label: 'Resilient', color: '#16a34a' },
+            { key: 'low-migration-low-yield', label: 'Structurally Poor', color: '#ea580c' },
+            { key: 'low-migration-high-yield', label: 'Stable', color: '#2563eb' },
           ].map(f => (
             <button
               key={f.key}
               onClick={() => setFilterType(f.key)}
               className="text-xs px-3 py-1.5 rounded-full border transition-all"
               style={{
-                borderColor: filterType === f.key ? f.color : '#334155',
-                backgroundColor: filterType === f.key ? f.color + '22' : 'transparent',
-                color: filterType === f.key ? f.color : '#64748b'
+                fontFamily: 'DM Mono, monospace',
+                borderColor: filterType === f.key ? f.color : 'rgba(14,14,12,0.12)',
+                backgroundColor: filterType === f.key ? `${f.color}1f` : 'transparent',
+                color: filterType === f.key ? f.color : '#9b9890'
               }}
             >
               {f.label}
@@ -151,20 +155,20 @@ export default function DistrictsPage() {
               <Link
                 key={district.slug}
                 href={`/district/${district.slug}`}
-                className="rounded-xl p-5 border border-white/5 hover:border-[#e8c547]/30 transition-all group"
-                style={{ backgroundColor: 'var(--bg-card)' }}
+                className="rounded-lg p-5 transition-all group"
+                style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px' }}
               >
                 {/* District header */}
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <p className="text-white font-semibold group-hover:text-[#e8c547] transition-colors">
+                    <p className="font-serif font-bold text-base group-hover:text-[#9e7c44] transition-colors" style={{ color: '#0e0e0c' }}>
                       {district.name}
                     </p>
-                    <p className="text-slate-500 text-xs mt-0.5">{district.province}</p>
+                    <p className="text-xs mt-0.5" style={{ color: '#9b9890' }}>{district.province}</p>
                   </div>
                   <span
                     className="text-xs px-2 py-0.5 rounded-full shrink-0"
-                    style={{ backgroundColor: color + '22', color: color, border: `1px solid ${color}44` }}
+                    style={{ backgroundColor: color + '1a', color: color, border: `0.8px solid ${color}40` }}
                   >
                     {district.paradox_label}
                   </span>
@@ -172,29 +176,29 @@ export default function DistrictsPage() {
 
                 {/* Key stats */}
                 <div className="grid grid-cols-2 gap-2 mt-3">
-                  <div className="rounded-lg p-2.5 bg-slate-800/50">
-                    <p className="text-slate-500 text-xs">Migration</p>
-                    <p className="text-white text-sm font-semibold">{district.absent_hh_rate.toFixed(1)}%</p>
+                  <div className="rounded-lg p-2.5" style={{ backgroundColor: '#f7f6f2', borderRadius: '6px' }}>
+                    <p className="text-xs" style={{ color: '#9b9890' }}>Migration</p>
+                    <p className="text-sm font-medium" style={{ color: '#0e0e0c' }}>{district.absent_hh_rate.toFixed(1)}%</p>
                   </div>
-                  <div className="rounded-lg p-2.5 bg-slate-800/50">
-                    <p className="text-slate-500 text-xs">Yield</p>
-                    <p className="text-sm font-semibold" style={{ color: yieldAbove ? '#22c55e' : '#ef4444' }}>
+                  <div className="rounded-lg p-2.5" style={{ backgroundColor: '#f7f6f2', borderRadius: '6px' }}>
+                    <p className="text-xs" style={{ color: '#9b9890' }}>Yield</p>
+                    <p className="text-sm font-medium" style={{ color: yieldAbove ? '#16a34a' : '#dc2626' }}>
                       {district.cereal_yield_mt_ha} MT/Ha
                     </p>
                   </div>
-                  <div className="rounded-lg p-2.5 bg-slate-800/50">
-                    <p className="text-slate-500 text-xs">RDI</p>
-                    <p className="text-white text-sm font-semibold">{district.rdi_score.toFixed(1)}</p>
+                  <div className="rounded-lg p-2.5" style={{ backgroundColor: '#f7f6f2', borderRadius: '6px' }}>
+                    <p className="text-xs" style={{ color: '#9b9890' }}>RDI</p>
+                    <p className="text-sm font-medium" style={{ color: '#0e0e0c' }}>{district.rdi_score.toFixed(1)}</p>
                   </div>
-                  <div className="rounded-lg p-2.5 bg-slate-800/50">
-                    <p className="text-slate-500 text-xs">vs Nat. Avg</p>
-                    <p className="text-sm font-semibold" style={{ color: yieldAbove ? '#22c55e' : '#ef4444' }}>
+                  <div className="rounded-lg p-2.5" style={{ backgroundColor: '#f7f6f2', borderRadius: '6px' }}>
+                    <p className="text-xs" style={{ color: '#9b9890' }}>vs Nat. Avg</p>
+                    <p className="text-sm font-medium" style={{ color: yieldAbove ? '#16a34a' : '#dc2626' }}>
                       {yieldAbove ? '+' : ''}{yieldDiff.toFixed(1)}%
                     </p>
                   </div>
                 </div>
 
-                <p className="text-[#e8c547] text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <p className="text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: '#9e7c44' }}>
                   View full profile →
                 </p>
               </Link>
@@ -204,8 +208,8 @@ export default function DistrictsPage() {
 
         {filtered.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-slate-500">No districts match your filters.</p>
-            <button onClick={() => { setSearch(''); setProvince('All'); setFilterType('all') }} className="text-[#e8c547] text-sm mt-2 hover:underline">
+            <p className="text-sm" style={{ color: '#9b9890' }}>No districts match your filters.</p>
+            <button onClick={() => { setSearch(''); setProvince('All'); setFilterType('all') }} className="text-sm mt-2" style={{ color: '#9e7c44' }}>
               Clear filters
             </button>
           </div>

@@ -88,15 +88,15 @@ export default function ComparePage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-10 py-16">
 
         {/* Header */}
         <div className="mb-10">
-          <p className="text-[#e8c547] text-sm font-medium tracking-widest uppercase mb-3">
+          <p className="text-xs tracking-widest uppercase mb-3" style={{ fontFamily: 'DM Mono, monospace', color: '#9b9890' }}>
             District Analysis
           </p>
-          <h1 className="text-4xl font-bold text-white mb-2">Compare Districts</h1>
-          <p className="text-slate-400">
+          <h1 className="font-serif font-bold text-4xl mb-2" style={{ color: '#0e0e0c' }}>Compare Districts</h1>
+          <p className="text-sm" style={{ color: '#6a6860' }}>
             Select any two districts to compare migration intensity, agricultural yield, and structural vulnerability side by side.
           </p>
         </div>
@@ -107,51 +107,48 @@ export default function ComparePage() {
             { label: 'District A', value: districtA, setter: setDistrictA, color: colorA, district: dA },
             { label: 'District B', value: districtB, setter: setDistrictB, color: colorB, district: dB },
           ].map(({ label, value, setter, color, district }) => (
-            <div key={label} className="rounded-xl p-5" style={{ backgroundColor: 'var(--bg-card)', borderTop: `3px solid ${color}` }}>
-              <p className="text-slate-400 text-xs mb-2">{label}</p>
+            <div key={label} className="rounded-lg p-5" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px', borderTop: `3px solid ${color}` }}>
+              <p className="text-xs mb-2" style={{ color: '#9b9890', fontFamily: 'DM Mono, monospace' }}>{label}</p>
               <select
                 value={value}
                 onChange={e => setter(e.target.value)}
-                className="w-full bg-slate-800 text-white rounded-lg px-3 py-2 text-sm border border-white/10 mb-4 focus:outline-none focus:border-[#e8c547]/50"
+                className="w-full px-3 py-2 text-sm mb-4 focus:outline-none"
+                style={{ backgroundColor: '#f7f6f2', border: '0.8px solid rgba(14,14,12,0.12)', borderRadius: '6px', color: '#0e0e0c' }}
               >
                 {districts.sort((a, b) => a.name.localeCompare(b.name)).map(d => (
                   <option key={d.slug} value={d.slug}>{d.name} ({d.province})</option>
                 ))}
               </select>
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-white font-bold text-lg">{district.name}</span>
+                <span className="font-serif font-bold text-lg" style={{ color: '#0e0e0c' }}>{district.name}</span>
                 <span
                   className="text-xs px-2 py-0.5 rounded-full"
-                  style={{ backgroundColor: color + '22', color: color, border: `1px solid ${color}44` }}
+                  style={{ backgroundColor: color + '1a', color: color, border: `0.8px solid ${color}40` }}
                 >
                   {PARADOX_LABELS[district.paradox_type]}
                 </span>
               </div>
-              <p className="text-slate-400 text-xs mt-1">{district.province} Province</p>
+              <p className="text-xs mt-1" style={{ color: '#9b9890' }}>{district.province} Province</p>
             </div>
           ))}
         </div>
 
         {/* Key Comparison Stats */}
-        <div className="rounded-xl p-6 mb-10" style={{ backgroundColor: 'var(--bg-card)' }}>
-          <h2 className="text-white font-semibold mb-5">Head-to-Head Comparison</h2>
+        <div className="rounded-lg p-6 mb-10" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px' }}>
+          <h2 className="font-serif font-bold text-lg mb-5" style={{ color: '#0e0e0c' }}>Head-to-Head Comparison</h2>
           <div className="space-y-3">
             {comparisonStats.map((stat, i) => (
               <div key={i} className="grid grid-cols-3 items-center gap-4">
                 <div className="text-right">
-                  <span
-                    className={`text-sm font-semibold ${stat.higher === 'A' ? 'text-white' : 'text-slate-500'}`}
-                  >
+                  <span className="text-sm" style={{ fontWeight: stat.higher === 'A' ? 600 : 400, color: stat.higher === 'A' ? '#0e0e0c' : '#d1cfc8' }}>
                     {stat.keyA}
                   </span>
                 </div>
                 <div className="text-center">
-                  <p className="text-slate-400 text-xs">{stat.label}</p>
+                  <p className="text-xs" style={{ color: '#9b9890' }}>{stat.label}</p>
                 </div>
                 <div className="text-left">
-                  <span
-                    className={`text-sm font-semibold ${stat.higher === 'B' ? 'text-white' : 'text-slate-500'}`}
-                  >
+                  <span className="text-sm" style={{ fontWeight: stat.higher === 'B' ? 600 : 400, color: stat.higher === 'B' ? '#0e0e0c' : '#d1cfc8' }}>
                     {stat.keyB}
                   </span>
                 </div>
@@ -159,17 +156,17 @@ export default function ComparePage() {
             ))}
           </div>
           {/* Yield comparison highlight */}
-          <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-2 gap-4">
+          <div className="mt-6 pt-5 grid grid-cols-2 gap-4" style={{ borderTop: '0.8px solid rgba(14,14,12,0.09)' }}>
             {[dA, dB].map((d, i) => {
               const diff = ((d.cereal_yield_mt_ha - 2.90) / 2.90 * 100)
               const above = diff >= 0
               return (
-                <div key={i} className="rounded-lg p-4 bg-slate-800/40 text-center">
-                  <p className="text-slate-400 text-xs mb-1">{d.name} vs National Avg</p>
-                  <p className={`text-2xl font-bold ${above ? 'text-green-400' : 'text-red-400'}`}>
+                <div key={i} className="rounded-lg p-4 text-center" style={{ backgroundColor: '#f7f6f2', borderRadius: '8px' }}>
+                  <p className="text-xs mb-1" style={{ color: '#9b9890' }}>{d.name} vs National Avg</p>
+                  <p className="font-serif font-bold text-2xl" style={{ color: above ? '#16a34a' : '#dc2626' }}>
                     {above ? '+' : ''}{diff.toFixed(1)}%
                   </p>
-                  <p className="text-slate-500 text-xs mt-1">{d.cereal_yield_mt_ha} MT/Ha vs 2.90 avg</p>
+                  <p className="text-xs mt-1" style={{ color: '#6a6860' }}>{d.cereal_yield_mt_ha} MT/Ha vs 2.90 avg</p>
                 </div>
               )
             })}
@@ -177,16 +174,16 @@ export default function ComparePage() {
         </div>
 
         {/* Bar Chart */}
-        <div className="rounded-xl p-6 mb-10" style={{ backgroundColor: 'var(--bg-card)' }}>
-          <h2 className="text-white font-semibold mb-1">Indicator Comparison</h2>
-          <p className="text-slate-400 text-xs mb-4">All indicators on 0–100 scale</p>
+        <div className="rounded-lg p-6 mb-10" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px' }}>
+          <h2 className="font-serif font-bold text-base mb-1" style={{ color: '#0e0e0c' }}>Indicator Comparison</h2>
+          <p className="text-xs mb-4" style={{ color: '#9b9890', fontFamily: 'DM Mono, monospace' }}>All indicators on 0–100 scale</p>
           <ResponsiveContainer width="100%" height={280}>
             <BarChart data={barData} barGap={4}>
-              <CartesianGrid stroke="#1e293b" vertical={false} />
-              <XAxis dataKey="metric" tick={{ fill: '#64748b', fontSize: 11 }} />
-              <YAxis tick={{ fill: '#64748b', fontSize: 11 }} domain={[0, 100]} />
+              <CartesianGrid stroke="rgba(14,14,12,0.06)" vertical={false} />
+              <XAxis dataKey="metric" tick={{ fill: '#9b9890', fontSize: 11 }} />
+              <YAxis tick={{ fill: '#9b9890', fontSize: 11 }} domain={[0, 100]} />
               <Tooltip
-                contentStyle={{ backgroundColor: '#1a2235', border: '1px solid #e8c54733', color: '#f1f5f9' }}
+                contentStyle={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.12)', color: '#0e0e0c', borderRadius: '6px' }}
               />
               <Legend />
               <Bar dataKey="A" name={dA.name} fill={colorA} radius={[4, 4, 0, 0]} />
@@ -196,29 +193,30 @@ export default function ComparePage() {
         </div>
 
         {/* Scatter — all districts with A and B highlighted */}
-        <div className="rounded-xl p-6 mb-10" style={{ backgroundColor: 'var(--bg-card)' }}>
-          <h2 className="text-white font-semibold mb-1">All 75 Districts — Migration vs Yield</h2>
-          <p className="text-slate-400 text-xs mb-4">
+        <div className="rounded-lg p-6 mb-10" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px' }}>
+          <h2 className="font-serif font-bold text-base mb-1" style={{ color: '#0e0e0c' }}>All 75 Districts — Migration vs Yield</h2>
+          <p className="text-xs mb-4" style={{ color: '#9b9890', fontFamily: 'DM Mono, monospace' }}>
             Selected districts highlighted. Colors indicate paradox classification.
           </p>
 
           {/* Filter buttons */}
           <div className="flex gap-2 flex-wrap mb-4">
             {[
-              { key: 'all', label: 'All Districts', color: '#64748b' },
-              { key: 'high-migration-low-yield', label: 'Paradox Zone', color: '#ef4444' },
-              { key: 'high-migration-high-yield', label: 'Resilient', color: '#22c55e' },
-              { key: 'low-migration-low-yield', label: 'Structurally Poor', color: '#f97316' },
-              { key: 'low-migration-high-yield', label: 'Stable', color: '#3b82f6' },
+              { key: 'all', label: 'All Districts', color: '#6a6860' },
+              { key: 'high-migration-low-yield', label: 'Paradox Zone', color: '#dc2626' },
+              { key: 'high-migration-high-yield', label: 'Resilient', color: '#16a34a' },
+              { key: 'low-migration-low-yield', label: 'Structurally Poor', color: '#ea580c' },
+              { key: 'low-migration-high-yield', label: 'Stable', color: '#2563eb' },
             ].map(f => (
               <button
                 key={f.key}
                 onClick={() => setFilterType(f.key)}
                 className="text-xs px-3 py-1 rounded-full border transition-all"
                 style={{
-                  borderColor: filterType === f.key ? f.color : '#334155',
-                  backgroundColor: filterType === f.key ? f.color + '22' : 'transparent',
-                  color: filterType === f.key ? f.color : '#64748b'
+                  fontFamily: 'DM Mono, monospace',
+                  borderColor: filterType === f.key ? f.color : 'rgba(14,14,12,0.12)',
+                  backgroundColor: filterType === f.key ? `${f.color}1f` : 'transparent',
+                  color: filterType === f.key ? f.color : '#9b9890'
                 }}
               >
                 {f.label}
@@ -228,15 +226,15 @@ export default function ComparePage() {
 
           <ResponsiveContainer width="100%" height={360}>
             <ScatterChart>
-              <CartesianGrid stroke="#1e293b" />
+              <CartesianGrid stroke="rgba(14,14,12,0.06)" />
               <XAxis
                 dataKey="x"
                 name="Migration Rate"
                 type="number"
                 domain={[0, 50]}
                 tickCount={6}
-                tick={{ fill: '#64748b', fontSize: 11 }}
-                label={{ value: 'HH Migration Rate (%)', position: 'insideBottom', offset: -5, fill: '#64748b', fontSize: 11 }}
+                tick={{ fill: '#9b9890', fontSize: 11 }}
+                label={{ value: 'HH Migration Rate (%)', position: 'insideBottom', offset: -5, fill: '#9b9890', fontSize: 11 }}
               />
               <YAxis
                 dataKey="y"
@@ -244,20 +242,20 @@ export default function ComparePage() {
                 type="number"
                 domain={[0, 6]}
                 tickCount={7}
-                tick={{ fill: '#64748b', fontSize: 11 }}
-                label={{ value: 'Yield (MT/Ha)', angle: -90, position: 'insideLeft', fill: '#64748b', fontSize: 11 }}
+                tick={{ fill: '#9b9890', fontSize: 11 }}
+                label={{ value: 'Yield (MT/Ha)', angle: -90, position: 'insideLeft', fill: '#9b9890', fontSize: 11 }}
               />
-              <ReferenceLine y={2.90} stroke="#e8c547" strokeDasharray="4 4" label={{ value: 'Nat. avg 2.90', fill: '#e8c547', fontSize: 10 }} />
-              <ReferenceLine x={25} stroke="#64748b" strokeDasharray="4 4" label={{ value: '25% threshold', fill: '#64748b', fontSize: 10, position: 'top' }} />
+              <ReferenceLine y={2.90} stroke="#9e7c44" strokeDasharray="4 4" label={{ value: 'Nat. avg 2.90', fill: '#9e7c44', fontSize: 10 }} />
+              <ReferenceLine x={25} stroke="#9b9890" strokeDasharray="4 4" label={{ value: '25% threshold', fill: '#9b9890', fontSize: 10, position: 'top' }} />
               <Tooltip
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     const d = payload[0].payload
                     return (
-                      <div className="p-2 rounded text-xs" style={{ backgroundColor: '#1a2235', border: '1px solid #e8c54733' }}>
-                        <p className="text-white font-semibold">{d.name}</p>
-                        <p className="text-slate-400">Migration: {d.x?.toFixed(1)}%</p>
-                        <p className="text-slate-400">Yield: {d.y} MT/Ha</p>
+                      <div className="p-2 rounded text-xs" style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.12)', borderRadius: '6px' }}>
+                        <p className="font-medium" style={{ color: '#0e0e0c' }}>{d.name}</p>
+                        <p style={{ color: '#6a6860' }}>Migration: {d.x?.toFixed(1)}%</p>
+                        <p style={{ color: '#6a6860' }}>Yield: {d.y} MT/Ha</p>
                         <p style={{ color: d.color }}>{PARADOX_LABELS[d.type]}</p>
                       </div>
                     )
@@ -268,7 +266,7 @@ export default function ComparePage() {
               {/* Background districts */}
               <Scatter
                 data={scatterData.filter(d => !d.isA && !d.isB && (filterType === 'all' || d.type === filterType))}
-                fill="#334155"
+                fill="#d1cfc8"
                 opacity={0.7}
               />
               {/* District A */}
@@ -291,7 +289,7 @@ export default function ComparePage() {
             {[dA, dB].map((d, i) => (
               <div key={i} className="flex items-center gap-2 text-xs">
                 <span className="w-3 h-3 rounded-full inline-block" style={{ backgroundColor: i === 0 ? colorA : colorB }}></span>
-                <span className="text-slate-400">{d.name}</span>
+                <span style={{ color: '#6a6860' }}>{d.name}</span>
               </div>
             ))}
           </div>
@@ -303,21 +301,21 @@ export default function ComparePage() {
             <Link
               key={i}
               href={`/district/${d.slug}`}
-              className="rounded-xl p-4 border border-white/10 hover:border-[#e8c547]/40 transition-all text-center"
-              style={{ backgroundColor: 'var(--bg-card)' }}
+              className="rounded-lg p-4 text-center transition-all"
+              style={{ backgroundColor: '#ffffff', border: '0.8px solid rgba(14,14,12,0.09)', borderRadius: '8px' }}
             >
-              <p className="text-slate-400 text-xs mb-1">View full profile</p>
-              <p className="text-white font-semibold">{d.name} →</p>
+              <p className="text-xs mb-1" style={{ color: '#9b9890' }}>View full profile</p>
+              <p className="font-serif font-bold" style={{ color: '#0e0e0c' }}>{d.name} →</p>
             </Link>
           ))}
         </div>
 
         {/* Navigation */}
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-slate-400 hover:text-[#e8c547] text-sm transition-colors">
+          <Link href="/" className="text-sm" style={{ color: '#9b9890' }}>
             ← Overview
           </Link>
-          <Link href="/methodology" className="text-[#e8c547] hover:underline text-sm">
+          <Link href="/methodology" className="text-sm" style={{ color: '#9e7c44' }}>
             Methodology →
           </Link>
         </div>
