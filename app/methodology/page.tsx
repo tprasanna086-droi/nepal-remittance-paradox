@@ -149,7 +149,7 @@ export default function MethodologyPage() {
             <h3 className="text-[#e8c547] font-semibold mb-3">Cross-Sectional Classification</h3>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               Districts are classified into four quadrants based on two thresholds: household migration 
-              rate above 25% (high migration) and cereal yield above the national average of 3.26 MT/Ha 
+              rate above 25% (high migration) and cereal yield above the district mean of 2.90 MT/Ha 
               (above-average productivity). This produces the core paradox taxonomy:
             </p>
             <div className="grid grid-cols-2 gap-3">
@@ -200,6 +200,83 @@ export default function MethodologyPage() {
                     <p className="text-white text-sm font-medium">{r.check}</p>
                     <p className="text-slate-400 text-xs mt-0.5">{r.result}</p>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Threshold Sensitivity Analysis */}
+        <section className="mb-12">
+          <h2 className="text-white text-2xl font-semibold mb-6">Threshold Sensitivity Analysis</h2>
+          
+          <div className="rounded-xl p-6 mb-6" style={{ backgroundColor: 'var(--bg-card)' }}>
+            <p className="text-slate-300 text-sm leading-relaxed mb-5">
+              The four-quadrant paradox taxonomy depends on two classification thresholds: 
+              household migration rate (baseline: 25%) and cereal yield (baseline: district mean 2.90 MT/Ha). 
+              To test robustness, we re-classified all 75 districts under four alternative threshold combinations. 
+              The baseline scenario (✦) is the primary analysis used throughout this study.
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left text-slate-400 text-xs py-2 pr-4">Migration Threshold</th>
+                    <th className="text-left text-slate-400 text-xs py-2 pr-4">Yield Threshold</th>
+                    <th className="text-center text-red-400 text-xs py-2 pr-4">Paradox Zone</th>
+                    <th className="text-center text-green-400 text-xs py-2 pr-4">Resilient</th>
+                    <th className="text-center text-orange-400 text-xs py-2 pr-4">Struct. Poor</th>
+                    <th className="text-center text-blue-400 text-xs">Stable</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {[
+                    { mig: '>20%', yield: 'Median (2.86)', paradox: 20, resilient: 22, poor: 18, stable: 15, base: false },
+                    { mig: '>25% ✦', yield: 'Mean (2.90) ✦', paradox: 11, resilient: 16, poor: 28, stable: 20, base: true },
+                    { mig: '>30%', yield: 'Mean (2.90)', paradox: 6, resilient: 10, poor: 33, stable: 26, base: false },
+                    { mig: '>25%', yield: '75th pct (3.48)', paradox: 20, resilient: 7, poor: 36, stable: 12, base: false },
+                  ].map((row, i) => (
+                    <tr key={i} className={row.base ? 'bg-[#e8c547]/5' : ''}>
+                      <td className="py-3 pr-4">
+                        <span className={row.base ? 'text-[#e8c547] font-medium' : 'text-slate-300'}>{row.mig}</span>
+                      </td>
+                      <td className="py-3 pr-4">
+                        <span className={row.base ? 'text-[#e8c547] font-medium' : 'text-slate-300'}>{row.yield}</span>
+                      </td>
+                      <td className="py-3 pr-4 text-center text-red-400 font-semibold">{row.paradox}</td>
+                      <td className="py-3 pr-4 text-center text-green-400 font-semibold">{row.resilient}</td>
+                      <td className="py-3 pr-4 text-center text-orange-400 font-semibold">{row.poor}</td>
+                      <td className="py-3 text-center text-blue-400 font-semibold">{row.stable}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-slate-500 text-xs mt-4">✦ Baseline scenario used in primary analysis throughout this study.</p>
+          </div>
+
+          <div className="rounded-xl p-6" style={{ backgroundColor: 'var(--bg-card)' }}>
+            <h3 className="text-[#e8c547] font-semibold mb-3">Borderline Districts</h3>
+            <p className="text-slate-300 text-sm leading-relaxed mb-4">
+              Six districts fall within ±3 percentage points of the 25% migration threshold with 
+              below-average yields. These borderline cases are sensitive to threshold choice and 
+              may warrant hybrid policy approaches combining Track 1 and Track 3 interventions:
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                { name: 'Baitadi', province: 'Sudurpashchim', migration: '26.5%', yield: '2.19' },
+                { name: 'Gorkha', province: 'Bagmati', migration: '24.2%', yield: '2.51' },
+                { name: 'Salyan', province: 'Lumbini', migration: '23.4%', yield: '2.76' },
+                { name: 'Dailekh', province: 'Karnali', migration: '22.4%', yield: '2.05' },
+                { name: 'Panchthar', province: 'Koshi', migration: '22.3%', yield: '2.33' },
+                { name: 'Bajura', province: 'Sudurpashchim', migration: '22.0%', yield: '1.73' },
+              ].map((d, i) => (
+                <div key={i} className="rounded-lg p-3 bg-slate-800/40 border border-[#e8c547]/20">
+                  <p className="text-white text-sm font-medium">{d.name}</p>
+                  <p className="text-slate-500 text-xs">{d.province}</p>
+                  <p className="text-slate-400 text-xs mt-1">Migration: {d.migration} · Yield: {d.yield}</p>
                 </div>
               ))}
             </div>

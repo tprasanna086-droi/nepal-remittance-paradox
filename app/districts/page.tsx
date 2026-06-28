@@ -144,7 +144,7 @@ export default function DistrictsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map(district => {
             const color = PARADOX_COLORS[district.paradox_type]
-            const yieldDiff = ((district.cereal_yield_mt_ha - 3.26) / 3.26 * 100)
+            const yieldDiff = ((district.cereal_yield_mt_ha - 2.90) / 2.90 * 100)
             const yieldAbove = yieldDiff >= 0
 
             return (

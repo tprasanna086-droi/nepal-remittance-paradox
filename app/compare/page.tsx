@@ -161,7 +161,7 @@ export default function ComparePage() {
           {/* Yield comparison highlight */}
           <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-2 gap-4">
             {[dA, dB].map((d, i) => {
-              const diff = ((d.cereal_yield_mt_ha - 3.26) / 3.26 * 100)
+              const diff = ((d.cereal_yield_mt_ha - 2.90) / 2.90 * 100)
               const above = diff >= 0
               return (
                 <div key={i} className="rounded-lg p-4 bg-slate-800/40 text-center">
@@ -169,7 +169,7 @@ export default function ComparePage() {
                   <p className={`text-2xl font-bold ${above ? 'text-green-400' : 'text-red-400'}`}>
                     {above ? '+' : ''}{diff.toFixed(1)}%
                   </p>
-                  <p className="text-slate-500 text-xs mt-1">{d.cereal_yield_mt_ha} MT/Ha vs 3.26 avg</p>
+                  <p className="text-slate-500 text-xs mt-1">{d.cereal_yield_mt_ha} MT/Ha vs 2.90 avg</p>
                 </div>
               )
             })}
@@ -247,7 +247,7 @@ export default function ComparePage() {
                 tick={{ fill: '#64748b', fontSize: 11 }}
                 label={{ value: 'Yield (MT/Ha)', angle: -90, position: 'insideLeft', fill: '#64748b', fontSize: 11 }}
               />
-              <ReferenceLine y={3.26} stroke="#e8c547" strokeDasharray="4 4" label={{ value: 'Nat. avg 3.26', fill: '#e8c547', fontSize: 10 }} />
+              <ReferenceLine y={2.90} stroke="#e8c547" strokeDasharray="4 4" label={{ value: 'Nat. avg 2.90', fill: '#e8c547', fontSize: 10 }} />
               <ReferenceLine x={25} stroke="#64748b" strokeDasharray="4 4" label={{ value: '25% threshold', fill: '#64748b', fontSize: 10, position: 'top' }} />
               <Tooltip
                 content={({ active, payload }) => {

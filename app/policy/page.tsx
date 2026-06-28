@@ -28,7 +28,7 @@ export default function PolicyPage() {
               Structural vulnerability — not migration intensity alone — determines whether 
               remittance-sending districts stagnate agriculturally. Districts with high RVI 
               scores average <span className="text-[#ef4444] font-semibold">2.1 MT/Ha</span> cereal 
-              yield against a national average of <span className="text-[#e8c547] font-semibold">3.26 MT/Ha</span>, 
+              yield against a national average of <span className="text-[#e8c547] font-semibold">2.90 MT/Ha</span>, 
               while ecologically advantaged high-migration districts maintain yields above average.
             </p>
             <p className="text-slate-400 text-sm">

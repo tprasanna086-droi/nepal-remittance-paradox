@@ -66,7 +66,7 @@ export default function DistrictPage() {
     )
   }
 
-  const nationalAvgYield = 3.26
+  const nationalAvgYield = 2.90
   const yieldVsNational = ((district.cereal_yield_mt_ha - nationalAvgYield) / nationalAvgYield * 100).toFixed(1)
   const yieldAbove = district.cereal_yield_mt_ha >= nationalAvgYield
 
@@ -225,7 +225,7 @@ export default function DistrictPage() {
                   tick={{ fill: '#64748b', fontSize: 11 }}
                   label={{ value: 'Yield (MT/Ha)', angle: -90, position: 'insideLeft', fill: '#64748b', fontSize: 11 }}
                 />
-                <ReferenceLine y={3.26} stroke="#e8c547" strokeDasharray="4 4" label={{ value: 'Nat. avg', fill: '#e8c547', fontSize: 10 }} />
+                <ReferenceLine y={2.90} stroke="#e8c547" strokeDasharray="4 4" label={{ value: 'Nat. avg 2.90', fill: '#e8c547', fontSize: 10 }} />
                 <Tooltip
                   contentStyle={{ backgroundColor: '#1a2235', border: '1px solid #e8c54733', color: '#f1f5f9' }}
                   formatter={(value, name) => [typeof value === 'number' ? value.toFixed(2) : String(value ?? ''), String(name)]}
@@ -266,7 +266,7 @@ export default function DistrictPage() {
           </h2>
           {district.paradox_type === 'high-migration-low-yield' && (
             <div className="space-y-2 text-slate-300 text-sm leading-relaxed">
-              <p>{district.name} exhibits the core remittance paradox: a high household migration rate of {district.absent_hh_rate.toFixed(1)}% — above the 25% threshold for migration-intensive districts — combined with cereal yields of {district.cereal_yield_mt_ha} MT/Ha, which fall {Math.abs(Number(yieldVsNational))}% below the national average of 3.26 MT/Ha.</p>
+              <p>{district.name} exhibits the core remittance paradox: a high household migration rate of {district.absent_hh_rate.toFixed(1)}% — above the 25% threshold for migration-intensive districts — combined with cereal yields of {district.cereal_yield_mt_ha} MT/Ha, which fall {Math.abs(Number(yieldVsNational))}% below the national average of 2.90 MT/Ha.</p>
               <p>The district&rsquo;s RVI score of {district.rvi_score.toFixed(1)} ({district.rvi_tier} vulnerability tier) suggests that structural conditions — low human capital, limited infrastructure, and geographic constraints — prevent remittance wealth from converting into agricultural investment.</p>
               <p>This pattern is consistent with the labour drain hypothesis: as working-age household members migrate, farm labour shortages reduce production capacity even when remittance income rises.</p>
             </div>

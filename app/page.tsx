@@ -67,12 +67,12 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-[#1a2235] rounded-xl p-6 border-l-4 border-[#e8c547]">
-            <p className="text-4xl font-bold text-white mb-1">3.26</p>
+            <p className="text-4xl font-bold text-white mb-1">2.90</p>
             <p className="text-[#e8c547] font-semibold text-sm">
               MT/Ha National Average
             </p>
             <p className="text-slate-400 text-xs mt-1">
-              Aggregate cereal yield 2022/23 (MoALD)
+              Mean cereal yield across 75 districts (MoALD 2022/23)
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function Home() {
               <p>
                 Districts with high migration AND high RVI (structural
                 vulnerability) show the lowest agricultural yields — averaging
-                2.1 MT/Ha vs the national 3.26 MT/Ha.
+                2.1 MT/Ha vs the national 2.90 MT/Ha.
               </p>
               <p>
                 However, ecologically advantaged districts (Terai plains)
