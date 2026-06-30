@@ -158,6 +158,25 @@ Available at: nepal-remittance-paradox.vercel.app
 
 ---
 
+## Replication
+
+Full replication scripts and instructions are in the [`/replication`](./replication) folder.
+
+```bash
+# Quick start
+cd replication
+pip install -r requirements.txt
+# Download data files (see replication/README_replication.md)
+python 01_extract_moald.py
+python 02_build_dataset.py
+python 03_regression_analysis.py
+python 04_spatial_models.py
+```
+
+See [`replication/README_replication.md`](./replication/README_replication.md) for full data acquisition instructions and expected outputs.
+
+---
+
 ## License
 
 MIT — data from CBS Nepal, MoALD, World Bank, and OPHI are subject to their respective terms of use.
