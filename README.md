@@ -76,6 +76,16 @@ PCA-derived weights across five indicators (PC1 explains 44.46% of variance):
 - Absent population rate: 18.7% (loading: 0.412)
 - Absent household rate: 15.5% (loading: 0.343)
 
+  This study's RVI was constructed independently for the yield regression context and 
+includes migration intensity indicators (absent population rate, absent household 
+rate) that the original Nepal Remittance Atlas RVI excludes to avoid circularity with 
+RDI. This was not a deliberate revision of the Atlas index — the two were built 
+separately for different analytical purposes — and the resulting indicator sets and 
+variance explained (PC1: 44.46% here vs. 63.35% in the Atlas) differ accordingly. 
+Readers comparing both projects should treat these as two distinct indices rather 
+than versions of one index. Harmonizing the two specifications is identified as a 
+priority for future work.
+
 RDI–RVI Spearman correlation: **-0.31** (confirming they measure distinct phenomena)
 
 ---
