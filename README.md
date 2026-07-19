@@ -1,9 +1,4 @@
 # Nepal Remittance Paradox
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/tprasanna086-droi/nepal-remittance-paradox/blob/main/LICENSE)
-![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)
-[![Deployed](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://nepal-remittance-paradox.vercel.app)
 
 An interactive research platform investigating why migration-intensive districts in Nepal fail to convert remittance wealth into agricultural productivity gains — a cross-sectional study of all 75 districts.
 
@@ -30,8 +25,8 @@ This study cross-references the [Nepal Remittance Atlas](https://github.com/tpra
 | Districts analyzed | 75 |
 | National average cereal yield | 2.90 MT/Ha |
 | RDI–Yield correlation | r = 0.27 (p = 0.017) |
-| Paradox Zone districts (high migration + below-avg yield) | 11 |
-| Resilient districts (high migration + above-avg yield) | 16 |
+| Paradox Zone districts (high migration + below-avg yield) | 17 |
+| Resilient districts (high migration + above-avg yield) | 10 |
 | Borderline districts (within ±3pp threshold sensitivity) | 6 |
 | Lowest cereal yield | 1.17 MT/Ha — Humla |
 | Highest cereal yield | 5.08 MT/Ha — Bhaktapur |
@@ -49,12 +44,12 @@ Districts are classified along two thresholds: household migration rate above 25
 
 | Classification | Definition | Districts |
 | --- | --- | --- |
-| Paradox Zone | High migration + below-average yield | 11 |
-| Resilient | High migration + above-average yield | 16 |
-| Structurally Poor | Low migration + below-average yield | 28 |
-| Stable | Low migration + above-average yield | 20 |
+| Paradox Zone | High migration + below-average yield | 17 |
+| Resilient | High migration + above-average yield | 10 |
+| Structurally Poor | Low migration + below-average yield | 32 |
+| Stable | Low migration + above-average yield | 16 |
 
-A threshold sensitivity analysis across four alternative specifications (varying the migration cutoff between 20–30% and the yield cutoff between the median, mean, and 75th percentile) confirms the Paradox Zone count ranges from 6 to 20 districts depending on threshold choice — the baseline 11-district classification is stable at moderate thresholds. Six districts (Baitadi, Gorkha, Salyan, Dailekh, Panchthar, Bajura) fall within ±3 percentage points of the migration threshold and are flagged as borderline.
+A threshold sensitivity analysis across four alternative specifications (varying the migration cutoff between 20–30% and the yield cutoff between the median, mean, and 75th percentile) confirms the Paradox Zone count ranges from 6 to 20 districts depending on threshold choice — the baseline 17-district classification is stable at moderate thresholds. Six districts (Baitadi, Gorkha, Salyan, Dailekh, Panchthar, Bajura) fall within ±3 percentage points of the migration threshold and are flagged as borderline.
 
 ### Regression Model
 
