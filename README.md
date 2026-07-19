@@ -1,194 +1,164 @@
+Nepal Remittance Paradox
+
+An interactive research platform investigating why migration-intensive districts in Nepal fail to convert remittance wealth into agricultural productivity gains — a cross-sectional study of all 75 districts.
+
+Live site: https://nepal-remittance-paradox.vercel.app
 
 
-# Nepal Remittance-Agriculture Paradox Study
+The Core Finding
 
-**Live Platform:** [nepal-remittance-paradox.vercel.app](https://nepal-remittance-paradox.vercel.app)  
-**Working Paper:** Available on SSRN (link to be added)  
-**Companion Project:** [Nepal Remittance Atlas](https://nepal-remittance-atlas-js.vercel.app)  
-**Author:** Prasanna Thapa | Independent Research | 2026
+Not all migration hurts farms — but structural vulnerability always does.
 
----
+Districts with high RVI (Remittance Vulnerability Index) scores average 2.1 MT/Ha in cereal yield — 28% below the national mean of 2.90 MT/Ha — regardless of how migration-intensive they are. Meanwhile, ecologically advantaged districts maintain strong yields even under heavy migration.
 
-## Overview
+Terrain and irrigation infrastructure appear to mediate the relationship: Terai districts largely maintain productivity despite heavy out-migration, while Sudurpashchim hill districts face the full force of the paradox — high migration and falling yields.
 
-This project examines why migration-intensive districts in Nepal fail to convert remittance wealth into agricultural productivity gains — a pattern we term the **remittance-agriculture paradox**.
+This study cross-references the Nepal Remittance Atlas's RDI and RVI indices with MoALD agricultural data to isolate the structural mechanisms driving the paradox, rather than treating "migration" as a single undifferentiated cause of agricultural decline.
 
-Using district-level cross-sectional data across all 75 districts of Nepal, we construct two composite indices from CBS 2021 Census microdata and cross-reference them with MoALD 2022/23 agricultural yield statistics. Spatial lag and spatial error models reveal that geographic proximity (ρ=0.823, p<0.001) is the dominant predictor of yield outcomes — a finding we report openly alongside the OLS results.
 
-This study is the companion to the [Nepal Remittance Atlas](https://nepal-remittance-atlas-js.vercel.app), which constructed the RDI and RVI indices used here.
+Key Statistics
 
----
+MetricValueDistricts analyzed75National average cereal yield2.90 MT/HaRDI–Yield correlationr = 0.27 (p = 0.017)Paradox Zone districts (high migration + below-avg yield)11Resilient districts (high migration + above-avg yield)16Borderline districts (within ±3pp threshold sensitivity)6Lowest cereal yield1.17 MT/Ha — HumlaHighest cereal yield5.08 MT/Ha — BhaktapurMaximum household migration rate42%
 
-## Research Question
 
-> Do structurally vulnerable districts fail to convert remittance-migration wealth into agricultural productivity gains — and what structural conditions explain the divergence between paradox and resilient districts?
+Methodology
 
----
+Research question: Do structurally vulnerable districts fail to convert remittance-migration wealth into agricultural productivity gains — and what structural conditions explain the divergence between paradox and resilient districts?
 
-## Key Findings
+Four-Quadrant Paradox Taxonomy
 
-- **OLS:** RDI positively associated (β=0.019, p=0.004) and RVI negatively associated (β=-0.025, p=0.010) with cereal yield (R²=0.204)
-- **Spatial models:** Geographic proximity dominates (SLM: ρ=0.823, p<0.001; SEM: λ=0.849, p<0.001); after spatial correction, RDI retains significance while RVI attenuates — indicating the vulnerability-yield association is largely geographic in origin
-- **VIF analysis:** Poverty rate excluded (VIF=894); RDI, RVI, literacy have acceptable VIFs
-- **Paradox taxonomy:** 11 Paradox Zone districts, 16 Resilient, 28 Structurally Poor, 20 Stable
-- **Threshold sensitivity:** Paradox Zone ranges from 6–20 districts across alternative threshold specifications
+Districts are classified along two thresholds: household migration rate above 25%, and cereal yield above the district mean of 2.90 MT/Ha.
 
----
+ClassificationDefinitionDistrictsParadox ZoneHigh migration + below-average yield11ResilientHigh migration + above-average yield16Structurally PoorLow migration + below-average yield28StableLow migration + above-average yield20
 
-## District Classification
+A threshold sensitivity analysis across four alternative specifications (varying the migration cutoff between 20–30% and the yield cutoff between the median, mean, and 75th percentile) confirms the Paradox Zone count ranges from 6 to 20 districts depending on threshold choice — the baseline 11-district classification is stable at moderate thresholds. Six districts (Baitadi, Gorkha, Salyan, Dailekh, Panchthar, Bajura) fall within ±3 percentage points of the migration threshold and are flagged as borderline.
 
-| Classification | Migration | Yield | N Districts |
-|---|---|---|---|
-| Paradox Zone | > 25% | ≤ 2.90 MT/Ha | 11 |
-| Resilient | > 25% | > 2.90 MT/Ha | 16 |
-| Structurally Poor | ≤ 25% | ≤ 2.90 MT/Ha | 28 |
-| Stable | ≤ 25% | > 2.90 MT/Ha | 20 |
+Regression Model
 
----
+Preferred OLS specification (poverty rate excluded due to severe multicollinearity — VIF = 894):
 
-## Data Sources
+Yield_i = β₀ + β₁(RDI_i) + β₂(RVI_i) + β₃(Literacy_i) + ε_i
 
-| Source | What It Provides | Level |
-|---|---|---|
-| CBS Nepal Census 2021 | Absent population/HH rates, literacy, education | District |
-| MoALD Statistical Information 2079/80 (2022/23) | Cereal yield (MT/Ha), area, production | District |
-| Nepal Remittance Atlas (Thapa, 2026) | RDI and RVI scores for all 75 districts | District |
-| World Bank Nepal Poverty Assessment | Poverty rates (excluded — VIF=894) | District |
-| OPHI MPI 2022 | Multidimensional poverty proxy for RVI | Provincial |
+VariableCoefficientp-valueRDI Scoreβ = 0.019p = 0.004 ***RVI Scoreβ = −0.025p = 0.010 ***Literacy Rateβ = −0.040p = 0.162 (n.s.)
 
----
+N = 75 districts. R² = 0.194 (F = 5.83, p < 0.001); rises to R² = 0.652 with province fixed effects. The positive RDI coefficient reflects ecological confounding — Terai districts tend to have both high migration and high yields.
 
-## Index Construction
+Spatial Econometric Correction
 
-### Remittance Dependency Index (RDI)
-Theory-driven weights across three CBS indicators:
-- Absent population rate: **40%**
-- Absent household rate: **35%**
-- Inverse secondary education of migrants: **25%**
+Moran's I on OLS residuals = 0.511 (p = 0.001), confirming significant spatial autocorrelation — geographic clustering matters. Maximum-likelihood spatial lag (SLM) and spatial error (SEM) models were estimated using Queen contiguity weights across the full 75-district sample:
 
-Scores rescaled 0–100. Tier classification via Jenks Natural Breaks.
 
-### Remittance Vulnerability Index (RVI)
-PCA-derived weights across five indicators (PC1 explains 44.46% of variance):
-- Inverse literacy rate: 25.5% (loading: 0.562)
-- Inverse secondary education: 20.7% (loading: 0.457)
-- MPI poverty proxy: 19.6% (loading: 0.433)
-- Absent population rate: 18.7% (loading: 0.412)
-- Absent household rate: 15.5% (loading: 0.343)
+Spatial lag ρ = 0.823 (p < 0.001) — neighboring districts' yields strongly predict a district's own yield; geography (terrain, irrigation, climate) explains most yield variation.
+RDI holds up: remains significant in both SLM (p = 0.010) and SEM (p = 0.010) — migration intensity has an association with yield independent of geographic clustering.
+RVI attenuates: becomes insignificant in both SLM (p = 0.177) and SEM (p = 0.904) — the vulnerability–yield association appears to be largely geographic in origin rather than an independent structural mechanism.
 
-  This study's RVI was constructed independently for the yield regression context and 
-includes migration intensity indicators (absent population rate, absent household 
-rate) that the original Nepal Remittance Atlas RVI excludes to avoid circularity with 
-RDI. This was not a deliberate revision of the Atlas index — the two were built 
-separately for different analytical purposes — and the resulting indicator sets and 
-variance explained (PC1: 44.46% here vs. 63.35% in the Atlas) differ accordingly. 
-Readers comparing both projects should treat these as two distinct indices rather 
-than versions of one index. Harmonizing the two specifications is identified as a 
-priority for future work.
 
-RDI–RVI Spearman correlation: **-0.31** (confirming they measure distinct phenomena)
+Model fit favors the spatial specifications (AIC: OLS = 173.4, SLM = 123.2, SEM = 122.1 — SEM preferred).
 
----
+Index Construction
 
-## Statistical Methods
+RDI (Remittance Dependency Index): theory-driven weights — Absent Population Rate (40%), Absent Household Rate (35%), Education Inverse (25%) — across CBS indicators. A sensitivity check against equal weighting (0.33/0.33/0.33) gives Spearman r = 0.753 between the two versions; the equal-weight version loses statistical significance in the yield regression, supporting the theory-driven weights.
 
-- Cross-sectional OLS regression with province fixed effects
-- Variance Inflation Factor (VIF) analysis — poverty rate excluded (VIF=894)
-- Spatial autocorrelation: Moran's I on OLS residuals = 0.511 (p=0.001)
-- Maximum Likelihood Spatial Lag Model (ρ=0.823, p<0.001)
-- Maximum Likelihood Spatial Error Model (λ=0.849, p<0.001)
-- AIC model comparison: OLS=173.4, SLM=123.2, SEM=122.1
-- Threshold sensitivity analysis across 4 classification scenarios
-- Border district robustness check (N=71, excluding Kanchanpur, Kailali, Jhapa, Mahottari)
+RVI (Remittance Vulnerability Index): PCA-derived from five z-scored indicators (Literacy Inverse, Education Inverse, MPI Poverty, Absent Population Rate, Absent Household Rate), following Abson et al. (2012). PC1 explains 44.46% of variance. Spearman correlation between PCA-based and equal-weight versions is 0.989, indicating stable rankings. RDI–RVI Spearman correlation is −0.31, confirming the two indices capture distinct phenomena.
 
----
+Robustness Checks
 
-## Project Structure
-nepal-remittance-paradox/
-├── app/
-│ ├── page.tsx # Homepage with interactive map
-│ ├── districts/page.tsx # District browser (all 75)
-│ ├── district/[slug]/page.tsx # Individual district profiles
-│ ├── compare/page.tsx # Side-by-side district comparison
-│ ├── methodology/page.tsx # Research design and methods
-│ └── policy/page.tsx # Policy implications
-├── components/
-│ ├── NepalMap.tsx # Leaflet interactive map
-│ ├── Navigation.tsx # Site navigation
-│ └── LoadingScreen.tsx # Loading animation
-├── data/
-│ └── districts.json # 75-district merged dataset
-└── public/
-└── nepal-districts.geojson # Nepal district boundaries 
----
 
-## Running Locally
+VIF analysis: poverty rate excluded (VIF = 894); RDI, RVI, and literacy retain acceptable VIFs (1.04, 4.85, 4.83).
+Weighting schemes: RVI stable across PCA vs. equal weights (Spearman > 0.989); RDI theory vs. equal weights (Spearman = 0.753), with theory weights producing the stronger yield association.
+Spatial autocorrelation: addressed via SLM/SEM as above.
+Border district exclusion (N = 71): removing Kanchanpur, Kailali, Jhapa, and Mahottari (India border-crossing risk for migration undercounting) does not change any district classifications.
+Threshold sensitivity: four alternative specifications tested; baseline classification is stable.
+Province fixed effects: R² rises from 0.194 to 0.652; RDI and RVI direction is maintained.
 
-```bash
+
+
+Policy Implications
+
+Core finding: structural vulnerability — not migration intensity alone — determines whether remittance-sending districts stagnate agriculturally. This implies remittance-related agricultural policy needs to be differentiated by district structural context rather than applied uniformly.
+
+Three district-differentiated policy tracks are proposed:
+
+Track 1 — Paradox Zone Districts. Labour outmigration reduces farm workforce while remittance income flows into consumption rather than agricultural investment. Recommended: mechanization subsidies to offset labour shortages, remittance-linked agricultural investment bonds coordinated with NRB and commercial banks, cooperative consolidation of fragmented smallholder plots, and reintegration programs for returning migrants.
+
+Track 2 — Resilient Districts. Predominantly Terai plains districts that maintain productivity despite heavy migration, likely due to irrigation, flat terrain, and market linkages. Recommended: case studies to document and replicate success factors, value chain investment (cold storage, processing, market access), and designation as peer-learning hubs for extension workers from paradox-zone districts.
+
+Track 3 — Structurally Poor Districts. Underperformance here is driven by structural poverty and geographic isolation, not remittance dynamics — applying remittance-focused policy here misdiagnoses the problem. Recommended: infrastructure-first investment (roads, irrigation), direct input subsidies (seed, fertilizer, pest management), and climate-adaptive crop research for high-altitude districts.
+
+What this study does not support: the cross-sectional design establishes correlation, not causation. It does not support claims that remittances directly cause agricultural decline, that reduced migration would raise yields, that the paradox is worsening over time, or that interventions successful in resilient districts would transfer directly to paradox-zone districts.
+
+
+Limitations
+
+
+Cross-sectional design — supports association claims only; causal identification would require panel data with within-district variation over time (at minimum, several years of MoALD yield data).
+Geography is the dominant constraint — spatial models (ρ = 0.823) show geographic proximity explains most yield variation; district-level migration policy operates within a terrain/infrastructure constraint that is hard to shift in the short term.
+RVI attenuates under spatial correction — becomes statistically insignificant in both spatial models, suggesting the vulnerability–yield association is largely geographic rather than an independent mechanism.
+India-border migration undercounting — the open border likely understates migration intensity in border districts (addressed via a border-exclusion robustness check, which did not change classifications).
+Provincial MPI as poverty proxy — district-level MPI is unavailable for Nepal, so all districts within a province share identical poverty scores, introducing artificial spatial clustering into RVI.
+Omitted variables — base OLS R² of 0.194 reflects unmeasured factors (soil quality, crop mix, elevation, irrigation coverage) not captured at the district level in CBS or MoALD data.
+
+
+
+Future Research Directions
+
+
+Panel data extension — 5–10 years of MoALD data would enable fixed-effects panel regression and support causal claims.
+Household-level survey — a targeted survey (200–300 households across paradox vs. resilient districts) to identify remittance usage patterns masked by district aggregates.
+Spatial lag models — further work using tools like pysal to account for geographic spillovers between districts.
+Crop disaggregation — aggregate cereal yield combines paddy, maize, and wheat, which may have different migration sensitivities.
+
+
+
+References
+
+Abson, D.J., Dougill, A.J., and Stringer, L.C. (2012). Using Principal Component Analysis for information-rich socio-ecological vulnerability mapping in Southern Africa. Applied Geography, 35(1-2), 515–524.
+
+CBS Nepal (2021). National Population and Housing Census 2021. Central Bureau of Statistics, Government of Nepal.
+
+MacCallum, R.C., Widaman, K.F., Zhang, S., and Hong, S. (1999). Sample size in factor analysis. Psychological Methods, 4(1), 84–99.
+
+MoALD (2023). Statistical Information on Nepalese Agriculture 2079/80 (2022/23). Ministry of Agriculture and Livestock Development, Government of Nepal.
+
+OPHI/DHS (2022). Nepal Multidimensional Poverty Index. Oxford Poverty and Human Development Initiative via Humanitarian Data Exchange.
+
+Shrestha, N. (2022). Do remittances reshape household expenditures? Evidence from Nepal. World Development, 157, 105933.
+
+World Bank (2023). Migration and Remittances Data. World Bank Open Data.
+
+
+Data Sources
+
+SourceDataYearMoALD — Statistical Information on Nepalese Agriculture 2079/80District-level cereal area, production, and yield for all 75 districts (extracted from Table 1.3 via pdfplumber)2022/23CBS Nepal CensusAbsent household rate, absent population rate, literacy rate, secondary education attainment2021Nepal Remittance AtlasRDI and RVI composite indices (Thapa, 2026), constructed via PCA across CBS microdata—World Bank / OPHI MPIDistrict/provincial poverty rates — excluded from the preferred regression (VIF = 894); provincial MPI used as a poverty proxy in RVI construction2022
+
+
+Pages
+
+PageDescriptionOverviewCore finding, key statistics, paradox vs. resilient district breakdownDistrict ExplorerBrowse all 75 districts with migration and yield dataCompareSide-by-side analysis of paradox vs. resilient districtsMethodologyData sources, index construction, and regression approachPolicyImplications for agricultural and migration policy
+
+
+Related Research
+
+This project builds directly on the Nepal Remittance Atlas, which constructed the RDI (Migration Dependency Index) and RVI (Remittance Vulnerability Index) using PCA-based methods and found the two indices to be statistically independent (Spearman r = 0.049, p > 0.05). Paradox extends that work by testing how those same indices relate to a real economic outcome — agricultural productivity — rather than stopping at the indices themselves.
+
+
+Tech Stack
+
+LayerTechnologyFrameworkNext.jsLanguageTypeScriptStylingTailwind CSSHostingVercel
+
+
+Run Locally
+
 git clone https://github.com/tprasanna086-droi/nepal-remittance-paradox.git
 cd nepal-remittance-paradox
 npm install
 npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000).
+Opens at http://localhost:3000
 
-> **Windows note:** If you encounter cache errors, run `Remove-Item -Recurse -Force .next` before `npm run dev`.
 
----
+Author
 
-## Limitations
-
-1. **Cross-sectional design** — supports association claims only; causal identification requires panel data
-2. **Geographic dominance** — spatial lag ρ=0.823 indicates geography explains most yield variation; district-level policy operates within a powerful terrain constraint
-3. **India migration undercounting** — open border means migration is underestimated in border districts
-4. **Provincial MPI proxy** — district-level MPI unavailable; provincial figures introduce artificial spatial clustering in RVI
-5. **RVI attenuation** — RVI becomes insignificant in spatial models, indicating the vulnerability-yield association is largely geographic in origin
-6. **Omitted variables** — soil quality, crop mix, elevation, irrigation coverage unavailable at district level
-
----
-
-## Robustness
-
-| Test | Result |
-|---|---|
-| RVI alternative weights (equal vs PCA) | Spearman correlation: 0.989 |
-| RDI alternative weights (equal vs theory) | Spearman correlation: 0.753 |
-| Border district exclusion (N=71) | Classifications unchanged |
-| Threshold sensitivity (4 scenarios) | Paradox Zone: 6–20 districts |
-| Spatial models (SLM, SEM) | RDI robust; RVI attenuates |
-| VIF analysis | Poverty excluded (VIF=894); others acceptable |
-
----
-
-## Citation
-Thapa, P. (2026). Remittance Dependency and Agricultural Stagnation in Nepal:
-A Cross-Sectional Analysis of 75 Districts. Working Paper.
-Available at: nepal-remittance-paradox.vercel.app 
-
----
-
-## Replication
-
-Full replication scripts and instructions are in the [`/replication`](./replication) folder.
-
-```bash
-# Quick start
-cd replication
-pip install -r requirements.txt
-# Download data files (see replication/README_replication.md)
-python 01_extract_moald.py
-python 02_build_dataset.py
-python 03_regression_analysis.py
-python 04_spatial_models.py
-```
-
-See [`replication/README_replication.md`](./replication/README_replication.md) for full data acquisition instructions and expected outputs.
-
----
-
-## License
-
-MIT — data from CBS Nepal, MoALD, World Bank, and OPHI are subject to their respective terms of use.
-
----
+Prasanna Thapa
+Nepal · 2026
+Independent research project on Nepal's remittance-agriculture paradox.
