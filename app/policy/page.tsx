@@ -102,7 +102,7 @@ export default function PolicyPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
                     <h3 className="font-serif font-bold text-lg" style={{ color: '#0e0e0c' }}>Track 2 — Resilient Districts</h3>
-                    <span className="text-xs" style={{ color: '#9e7c44', fontFamily: 'DM Mono, monospace' }}>16 districts</span>
+                    <span className="text-xs" style={{ color: '#9e7c44', fontFamily: 'DM Mono, monospace' }}>10 districts</span>
                   </div>
                   <p className="text-sm leading-relaxed" style={{ color: '#6a6860' }}>
                     These districts — predominantly Terai plains — maintain high agricultural 
