@@ -3,7 +3,7 @@ Nepal Remittance Paradox
 ![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)
-![Deployed](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)
+[![Deployed](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://nepal-remittance-paradox.vercel.app)
 
 An interactive research platform investigating why migration-intensive districts in Nepal fail to convert remittance wealth into agricultural productivity gains — a cross-sectional study of all 75 districts.
 
