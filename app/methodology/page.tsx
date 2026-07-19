@@ -190,15 +190,15 @@ export default function MethodologyPage() {
               Districts classified by two thresholds: household migration rate above 25%
               and cereal yield above the district mean of 2.90 MT/Ha. Threshold sensitivity
               analysis across four alternative specifications confirms the Paradox Zone
-              ranges from 6 to 20 districts — the baseline 11-district classification
+              ranges from 6 to 20 districts — the baseline 17-district classification
               is robust to reasonable threshold variation.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: 'Paradox Zone', desc: 'High migration + below-average yield', n: '11 districts', color: '#dc2626' },
-                { label: 'Resilient', desc: 'High migration + above-average yield', n: '16 districts', color: '#16a34a' },
-                { label: 'Structurally Poor', desc: 'Low migration + below-average yield', n: '28 districts', color: '#ea580c' },
-                { label: 'Stable', desc: 'Low migration + above-average yield', n: '20 districts', color: '#2563eb' },
+                { label: 'Paradox Zone', desc: 'High migration + below-average yield', n: '17 districts', color: '#dc2626' },
+                { label: 'Resilient', desc: 'High migration + above-average yield', n: '10 districts', color: '#16a34a' },
+                { label: 'Structurally Poor', desc: 'Low migration + below-average yield', n: '32 districts', color: '#ea580c' },
+                { label: 'Stable', desc: 'Low migration + above-average yield', n: '16 districts', color: '#2563eb' },
               ].map((q, i) => (
                 <div key={i} className="rounded p-4"
                   style={{ backgroundColor: '#f7f6f2', borderLeft: `3px solid ${q.color}` }}>
